@@ -7,6 +7,7 @@ import { User } from "../entities/User";
 
 export interface IUserService {
   create(data: CreateUserDTO): Promise<User>;
+  findByEmail(email: string): Promise<User | undefined>;
 }
 
 @injectable()
@@ -26,5 +27,9 @@ export class UserService implements IUserService {
     });
 
     return user;
+  }
+
+  async findByEmail(email: string): Promise<User | undefined> {
+    return this.usersRepository.findByEmail(email);
   }
 }
