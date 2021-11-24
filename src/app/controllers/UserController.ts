@@ -1,17 +1,16 @@
-import { inject } from 'tsyringe';
+import { container } from 'tsyringe';
 import { Request, Response } from 'express';
-import { IUserService } from '../services/UserService';
+import { UserService } from '../services/UserService';
 
 export class UserController {
-  constructor(
-    @inject('UserService')
-    private usersService: IUserService,
-  ) {}
+  constructor() {}
 
   async create(request: Request, response: Response) {
+    console.log('oie')
     const { name, email, password } = request.body;
+    const userService = container.resolve(UserService);
 
-    await this.usersService.create({ name, email, password });
+    await userService.create({ name, email, password });
 
     return response.status(201).send();
   }

@@ -10,13 +10,13 @@ export interface IUserService {
 }
 
 @injectable()
-export class UserService {
+export class UserService implements IUserService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: UsersRepository,
   ) {}
 
-  async createUser({ name, email, password }: CreateUserDTO) {
+  async create({ name, email, password }: CreateUserDTO) {
     const passwordHash = await hash(password, 8);
 
     const user = await this.usersRepository.create({

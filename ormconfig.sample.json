@@ -6,6 +6,7 @@
   "host": "127.0.0.1",
   "port": 5432,
   "database": "plants-db",
+  "synchronize": false,
   "entities": [
     "./src/modules/**/entities/*.ts"
   ],
