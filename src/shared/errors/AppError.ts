@@ -5,7 +5,7 @@ export class AppError {
 
   readonly formErrors: any;
 
-  constructor(message: string, statusCode = 400, formErrors: any = {}) {
+  constructor(message: string, statusCode = 400, formErrors: any = undefined) {
     this.message = message;
     this.statusCode = statusCode;
     this.formErrors = formErrors;

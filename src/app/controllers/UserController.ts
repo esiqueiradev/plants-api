@@ -6,7 +6,6 @@ export class UserController {
   constructor() {}
 
   async create(request: Request, response: Response) {
-    console.log('oie')
     const { name, email, password } = request.body;
     const userService = container.resolve(UserService);
 
